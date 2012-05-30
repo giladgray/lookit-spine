@@ -1,0 +1,19 @@
+// Place all the styles related to the Pages controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+@import "bootstrap";
+@mixin gradient($first, $second) {
+	background: $first;
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='$first', endColorstr='$second');
+	background: -webkit-gradient(linear, left top, left bottom, from($first), to($second));
+	background: -moz-linear-gradient(top,  $first,  $second);
+}
+@mixin rotate($deg) {
+	-webkit-transform: rotate($deg);
+	-moz-transform: rotate($deg);
+	-ms-transform: rotate($deg);
+	-o-transform: rotate($deg);
+	transform: rotate($deg);
+}
+
