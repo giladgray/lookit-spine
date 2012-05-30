@@ -1,3 +1,6 @@
+# Spine = require('spine')
+# $     = Spine.$
+
 class App.Gallery extends Spine.Model
 	@configure 'Gallery', 'title', 'type', 'pageUrl', 'thumbUrl'
 	#@extend Spine.Model.Ajax
@@ -13,7 +16,7 @@ class App.Gallery extends Spine.Model
 		safeUrl = if url.startsWith("http://") then url else "http://#{url}"
 		console.log "Loading URL " + url
 		# load the page, find all image links and process them
-		$.get safeUrl, (response) ->
+		$.get url, (response) ->
 			for pic in $(response).find('a>img').parent()
 				pic = $(pic)
 				img = pic.find('img')

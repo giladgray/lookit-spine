@@ -17,3 +17,56 @@
 	transform: rotate($deg);
 }
 
+///
+// .btn-hover classes + lookit, close, queue
+///
+.btn-hover { 
+	cursor: pointer;
+	font: bold 20px sans-serif;
+	text-align: center;
+	opacity: 0.3; 
+}
+.btn-hover:hover { opacity: 0.75; }
+.btn-hover.vertical {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	line-height: 16px;
+	width: 17px;
+	padding-right: 3px;	
+}
+.btn-hover.horizontal {
+	position: absolute;
+	left: 0;
+	right: 0;
+	width: 100%;
+}
+
+.lookit.btn-hover {
+	left: 0;
+	// height: 19px;
+	// border-radius: 0 0 12px 0;
+	padding-top: 1px;
+	@include gradient(skyblue, transparent)
+}
+.close.btn-hover {
+	// height: 20px;
+	// border-radius: 0 0 0 12px;
+	right: 0;
+	@include gradient(red, transparent);
+}
+.queue.btn-hover {
+	bottom: 0;
+	background: green;
+}
+
+.pic-container {
+	margin: 5px;
+	display: inline-block;
+	position: relative;
+	width: auto;
+}
+.pic-container:hover {
+	border: 2px solid orange;
+	margin: 3px;
+}

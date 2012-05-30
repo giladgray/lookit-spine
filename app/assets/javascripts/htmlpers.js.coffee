@@ -7,7 +7,7 @@ String::endsWith = (suffix) ->
 window.defaultValue = (value, defaultValue) ->
   if value? then value else defaultValue
 
-# HTML GENERATORS (jQuery wrappers)
+# HTML GENERATORS (jQuery wrappers perfect for coffeescripting)
 window.tag = (tagname, classes, body...) ->
   html = $(tagname).addClass(classes)
   html.append text for text in body
@@ -24,8 +24,8 @@ window.link = (href, classes, body...) ->
   tag("<a>", classes, body...).attr("href", href)
 window.img = (src, classes, body...) ->
   tag("<img>", classes, body...).attr("src", src)
-
-window.icon = (name, white=false) ->
+# a special helper for icons in Twitter Bootstrap
+window.icon = (name, color) ->
   html = tag("<i>", "icon-#{name}")
-  html.addClass("icon-white") if white
+  html.addClass("icon-#{color}") if color
   html

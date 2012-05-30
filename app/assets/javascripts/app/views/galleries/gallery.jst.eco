@@ -1,2 +1,14 @@
-<div class="gallery">
+<div class="pic-container">
+	<a class="pic <%= @type %>" href="<%= @pageUrl %>">
+		<img alt="<%= @title %>" src="<%= @thumbUrl %>" />
+	</a>
 </div>
+<span class="pic-container">
+	<a class="pic <%= @type %>" href="<%= @pageUrl %>">
+		<img alt="<%= @title %>" src="<%= @thumbUrl %>" />
+	</a>
+	<span class="type btn-hover horizontal"><i class="icon-<%= @type %>"></i></span>
+	<span class="close btn-hover vertical">&times;</span>
+	<span class="queue btn-hover horizontal">+queue</span>
+	<span class="open btn-hover vertical"><i class="icon-share"></i></span>
+</span>
