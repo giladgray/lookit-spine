@@ -4,6 +4,7 @@
 #= require spine/manager
 #= require spine/ajax
 #= require spine/route
+#= require spine/list
 
 #= require_tree ./lib
 #= require_self
@@ -16,7 +17,9 @@ class App extends Spine.Controller
     super
     
     # Initialize controllers:
-    @append(@galleries = new App.Galleries)
+    @galleries = new App.Galleries
+    @append(@galleries)
+    window.galleries = @galleries
     
     Spine.Route.setup()    
 

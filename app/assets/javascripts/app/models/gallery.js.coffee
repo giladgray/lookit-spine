@@ -12,7 +12,7 @@ class App.Gallery extends Spine.Model
 			item.pageUrl?.toLowerCase().indexOf(query) isnt -1 or
 				item.title?.toLowerCase().indexOf(query) isnt -1
 
-	@fromUrl: (url) ->
+	@fromUrl: (url, callback) ->
 		safeUrl = if url.startsWith("http://") then url else "http://#{url}"
 		console.log "Loading URL " + url
 		# load the page, find all image links and process them
@@ -20,8 +20,10 @@ class App.Gallery extends Spine.Model
 			for pic in $(response).find('a>img').parent()
 				pic = $(pic)
 				img = pic.find('img')
-				App.Gallery.create
+				gal = App.Gallery.create
 					title: img.attr('alt')
 					type: discernType(pic.attr('href'))
-					pageUrl: pic.attr 'href'		# urlMagic(pic.attr('href'), safeUrl)
-					thumbUrl: img.attr 'src'		#urlMagic(img.attr('src'))
+					pageUrl: urlMagic(pic.attr('href'), safeUrl)
+					thumbUrl: urlMagic(img.attr('src'), safeUrl)
+				console.log "created pic #{gal.pageUrl}"
+			callback()

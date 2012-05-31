@@ -1,14 +1,11 @@
-<div class="pic-container">
-	<a class="pic <%= @type %>" href="<%= @pageUrl %>">
-		<img alt="<%= @title %>" src="<%= @thumbUrl %>" />
-	</a>
-</div>
+<% for item in @: %>
 <span class="pic-container">
-	<a class="pic <%= @type %>" href="<%= @pageUrl %>">
-		<img alt="<%= @title %>" src="<%= @thumbUrl %>" />
+	<a class="pic <%= item.type %>" href="<%= item.pageUrl %>">
+		<img alt="<%= item.title %>" src="<%= item.thumbUrl %>" />
 	</a>
-	<span class="type btn-hover horizontal"><i class="icon-<%= @type %>"></i></span>
+	<span class="type btn-hover horizontal"><i class="icon-<%= item.type %>"></i></span>
 	<span class="close btn-hover vertical">&times;</span>
 	<span class="queue btn-hover horizontal">+queue</span>
 	<span class="open btn-hover vertical"><i class="icon-share"></i></span>
 </span>
+<% end %>

@@ -6,54 +6,69 @@ class App.Galleries extends Spine.Controller
 
 	elements:
 		'.site-list': 'items'
-		'#search':  'search'
+		'#search': 'search'
+		'#filter': 'filter'
 
 	events:
-		'keyup #filter': 'filter'
-		#'click .btn-hover.lookit': 'lookit'
-		#'click .btn-hover.open':   'open'
-		#'click .btn-hover.queue':  'enqueue'
-		#'click .btn-hover.remove': 'remove'
+		'keyup #filter': 'render'
+		'submit form': 'loadPage'
+		'click .pic': 'lookit'
+		'click .open.btn-hover':  'open'
+		'click .queue.btn-hover': 'enqueue'
+		'click .close.btn-hover': 'delete'
 
 	constructor: ->
 		super
 		# render inital view
-		@html require('views/search')()
+		@html @view('search')()
 
 		# setup a Spine List
-		@list = new List
+		@list = new Spine.List
 			el: @items
-			template: require('views/galleries/gallery')
+			template: @view('galleries/gallery')
 		
 		@list.bind 'change', @change
 
-		@active @filter
+		@active @render
 		# @active (params) ->
 		# 	@list.change(Gallery.find(params.id))
-
-	filter: ->
-		@query = @search.val()
-		@render()
 
 	render: ->
 		# Render a template, replacing the 
 		# controller's HTML
-		@list.render(Gallery.filter(@query))
+		@query = @filter.val()
+		galleries = App.Gallery.filter(@query)
+		@list.render(galleries)
 
 	change: (params) =>
 		console.log "Show#change called."
 		console.log params
 		#@item = Gallery.find(params.id)
-		#@render()
+		@render()
+
+	loadPage: (e) ->
+		e.preventDefault()
+		console.log "loading page #{@search.val()}"
+		App.Gallery.fromUrl(@search.val(), () => @render())
 
 	lookit: (e) ->
 		e.preventDefault()
+		console.log "lookit clicked"
+		url = $(e.target).parent().attr('href')
+		window.open url
 
 	open: (e) ->
+		console.log "open clicked"
+		console.log $(e.currentTarget).siblings('.pic')
+		console.log e
 
 	enqueue: (e) ->
+		console.log "queue clicked"
+		console.log e
 
-	remove: (e) ->
+	delete: (e) ->
+		console.log "close clicked"
+		$(e.target).parent().remove()
 
 	edit: ->
 		# Navigate to the 'edit' view whenever
