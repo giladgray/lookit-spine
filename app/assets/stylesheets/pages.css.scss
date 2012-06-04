@@ -20,6 +20,14 @@
 .left { float: left; }
 .right { float: right; }
 
+.input-large, .input-prepend .add-on.input-large {
+	padding: 9px 5px;
+}
+
+.btn-group.types {
+	padding-left: 20px;
+}
+
 ///
 // .btn-hover classes + lookit, close, queue
 ///
@@ -45,9 +53,15 @@
 	width: 100%;
 }
 
-.type.btn-hover {
+.type.icon {
+	position: absolute;
 	top: 0;
+	left: 50%;
+	width: 16px;
+	margin-left: -8px;
+	opacity: 0.4;
 }
+.type.icon:hover { opacity: 0.75; }
 .lookit.btn-hover {
 	left: 0;
 	padding-top: 1px;

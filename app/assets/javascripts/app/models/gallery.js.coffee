@@ -4,9 +4,13 @@ class App.Gallery extends Spine.Model
 
 	@belongsTo 'page', 'App.Page'
 
-	@filter: (query) ->
-		return @all() unless query
+	@filter: (query, types) ->
+		console.log "filter stops by #{query} and #{types}"
+		return @all() unless query or types
+		types = [] unless types
 		query = query.toLowerCase()
 		@select (item) ->
-			item.pageUrl?.toLowerCase().indexOf(query) isnt -1 or
-				item.title?.toLowerCase().indexOf(query) isnt -1
+			#console.log "type: #{item.type} - #{item.type in types}"
+			(item.type in types) and
+			(item.pageUrl?.toLowerCase().indexOf(query) isnt -1 or
+				 item.title?.toLowerCase().indexOf(query) isnt -1)

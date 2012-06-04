@@ -9,6 +9,7 @@ class App.Galleries extends Spine.Controller
 		'.site-list': 'items'
 		'#search': 'search'
 		'#filter': 'filter'
+		'.types .btn': 'typeButtons'
 
 	events:
 		'keyup #filter': 'render'
@@ -19,6 +20,7 @@ class App.Galleries extends Spine.Controller
 		'click .pic.image': 'carousel'
 		'click .pic.video': 'player'
 		'click .pic.gallery': 'lookit'
+		'click .types .btn': 'render'
 
 	constructor: ->
 		super
@@ -38,8 +40,12 @@ class App.Galleries extends Spine.Controller
 
 	render: ->
 		@header.html @view('pages/header')(@page)
+
 		@query = @filter.val()
-		galleries = App.Gallery.filter(@query)
+		typeFilter = []
+		for btn in @typeButtons
+			typeFilter.push $(btn).data('type') if $(btn).hasClass('active')
+		galleries = App.Gallery.filter(@query, typeFilter)
 		@list.render(galleries)
 
 	change: (page) =>

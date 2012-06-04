@@ -2,12 +2,18 @@
 	<form class="input-prepend input-append form-inline lookit">
 		<span class="add-on input-large">http://</span><input type="text" id="search" name="url" value="" class="input-large site span9" placeholder="enter an address to load" /><button id="lookit" class="btn btn-info btn-large" type="submit"><i class="icon-search icon-white"></i> lookit</button>
 	</form>
-	<div class="input-prepend input-append form-inline lookit">
-		<span class="add-on input-large">filter:</span>
-		<input type="text" id="filter" name="url" value="" class="input-large site span9" placeholder="filter the results" />
+	<div class="btn-toolbar">
+		<span class="input-prepend input-append form-inline lookit">
+			<span class="add-on input-large">filter:</span><input type="text" id="filter" name="url" value="" class="input-large site span6" placeholder="filter the results" />
+		</span>
+		<span class="btn-group types" data-toggle="buttons-checkbox">
+			<% for type, object of displayTypes: %>
+			<button class="btn btn-large active" data-type="<%= type %>"><i class="<%= object.icon %>"></i></button>
+			<% end %>
+		</span>
 	</div>
 
-	<div class="btn-group options">
+	<div class="btn-group options hide">
 		<button class="btn btn-large dropdown-toggle" data-toggle="dropdown">
 			<i class="icon-cog"></i> <span class="caret"></span>
 		</button>
