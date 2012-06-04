@@ -1,8 +1,6 @@
 <header class="well">
 	<form class="input-prepend input-append form-inline lookit">
-		<span class="add-on input-large">http://</span>
-		<input type="text" id="search" name="url" value="" class="input-large site span9" placeholder="enter an address to load" />
-		<button id="lookit" class="btn btn-info btn-large" type="submit"><i class="icon-search icon-white"></i> lookit</button>
+		<span class="add-on input-large">http://</span><input type="text" id="search" name="url" value="" class="input-large site span9" placeholder="enter an address to load" /><button id="lookit" class="btn btn-info btn-large" type="submit"><i class="icon-search icon-white"></i> lookit</button>
 	</form>
 	<div class="input-prepend input-append form-inline lookit">
 		<span class="add-on input-large">filter:</span>
@@ -18,4 +16,5 @@
 		</ul>
 	</div>
 </header>
+<div class="page-header"></div>
 <div class="site-list"></div>

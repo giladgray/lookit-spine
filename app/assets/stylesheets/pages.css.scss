@@ -17,6 +17,9 @@
 	transform: rotate($deg);
 }
 
+.left { float: left; }
+.right { float: right; }
+
 ///
 // .btn-hover classes + lookit, close, queue
 ///
@@ -42,16 +45,15 @@
 	width: 100%;
 }
 
+.type.btn-hover {
+	top: 0;
+}
 .lookit.btn-hover {
 	left: 0;
-	// height: 19px;
-	// border-radius: 0 0 12px 0;
 	padding-top: 1px;
 	@include gradient(skyblue, transparent)
 }
 .close.btn-hover {
-	// height: 20px;
-	// border-radius: 0 0 0 12px;
 	right: 0;
 	@include gradient(red, transparent);
 }
@@ -70,3 +72,8 @@
 	border: 2px solid orange;
 	margin: 3px;
 }
+
+// icon renames
+.icon-image { background-position: -456px -48px }	//icon-picture
+.icon-video { background-position: -192px 0} 		//icon-film
+.icon-gallery { background-position: -240px 0;}		//icon-th

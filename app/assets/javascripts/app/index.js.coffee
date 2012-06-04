@@ -5,6 +5,7 @@
 #= require spine/ajax
 #= require spine/route
 #= require spine/list
+#= require spine/relation
 
 #= require_tree ./lib
 #= require_self
@@ -20,6 +21,10 @@ class App extends Spine.Controller
     @galleries = new App.Galleries
     @append(@galleries)
     window.galleries = @galleries
+
+    @routes
+    	"/oo/:url": (params) ->
+    		@galleries.active(params)
     
     Spine.Route.setup()    
 

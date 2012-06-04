@@ -1,0 +1,6 @@
+<div class="btn-group right">
+	<button class="btn remove" title="Remove this gallery" data-remove="<%= @id %>"><i class="icon-trash"></i></button>
+	<button class="btn refresh" title="Refresh this gallery" data-refresh="<%= @title %>"><i class="icon-refresh"></i></button>
+	<button class="btn play" title="Slideshow it!" data-list="<%= @id %>"><i class="icon-play"></i></button>
+</div>
+<h2><a href="<%= @url %>"><%= @url %></a></h2><h4><%= @title %></h4>
